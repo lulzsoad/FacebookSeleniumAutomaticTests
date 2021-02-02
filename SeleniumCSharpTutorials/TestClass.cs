@@ -15,7 +15,7 @@ namespace SeleniumCSharpTutorials
     [TestFixture]
     public class TestClass : BaseTest
     {
-        [Test]
+        [Test, Category("Smoke Testing")]
         public void TestMethod1()
         {
             IWebElement nameTextField =  driver.FindElement(By.XPath(".//*[@id='u_3_b']"));
@@ -28,17 +28,17 @@ namespace SeleniumCSharpTutorials
             element.SelectByValue("6");
         }
 
-        [Test]
+        [Test, Category("Regression Testing")]
         public void TestMethod2()
         {
-            IWebElement emailTextField = driver.FindElement(By.XPath(".//*[@id='email']"));
+            IWebElement emailTextField = driver.FindElement(By.XPath(".//*[@id='u_3_b']"));
             emailTextField.SendKeys("Selenium C#");
         }
 
-        [Test]
+        [Test, Category("Smoke Testing")]
         public void TestMethod3()
         {
-            IWebElement emailTextField = driver.FindElement(By.XPath(".//*[@id='email']"));
+            IWebElement emailTextField = driver.FindElement(By.XPath(".//*[@id='u_3_b']"));
             emailTextField.SendKeys("Selenium C#");
 
             Thread.Sleep(5000);

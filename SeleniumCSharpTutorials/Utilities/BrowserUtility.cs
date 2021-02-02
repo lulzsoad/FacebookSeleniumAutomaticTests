@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -8,16 +7,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-
-namespace SeleniumCSharpTutorials.BaseClass
+namespace SeleniumCSharpTutorials.Utilities
 {
-    
-    public class BaseTest
+    public class BrowserUtility
     {
-        public IWebDriver driver;
-
-        [OneTimeSetUp]
-        public void Open()
+        public IWebDriver Init(IWebDriver driver)
         {
             ChromeOptions options = new ChromeOptions() { BinaryLocation = @"C:\Program Files\Google\Chrome\Application\chrome.exe" };
             driver = new ChromeDriver(options);
@@ -25,19 +19,11 @@ namespace SeleniumCSharpTutorials.BaseClass
             driver.Url = "https://www.facebook.com/";
 
             IWebElement cookiesAcceptation = driver.FindElement(By.XPath(".//*[@id='u_0_h']"));
-            IWebElement registerButton = driver.FindElement(By.XPath(".//*[@id='u_0_2']"));
-            
+
             cookiesAcceptation.Click();
             Thread.Sleep(1000);
-            registerButton.Click();
-            Thread.Sleep(1000);
-        }
 
-        [OneTimeTearDown]
-        public void Close()
-        {
-            driver.Quit();
+            return driver;
         }
-
     }
 }
